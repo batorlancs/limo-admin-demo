@@ -28,10 +28,7 @@ export default tseslint.config(
             "prettier/prettier": [
                 "error",
                 {
-                    trailingComma: "es5",
-                    tabWidth: 4,
-                    semi: true,
-                    singleQuote: false,
+                    endOfLine: "auto",
                 },
             ],
         },
