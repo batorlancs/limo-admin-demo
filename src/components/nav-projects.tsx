@@ -25,21 +25,27 @@ import {
 
 export function NavProjects({
     projects,
+    title,
 }: {
     projects: {
         name: string;
         url: string;
         icon: LucideIcon;
+        selected?: boolean;
     }[];
+    title: string;
 }) {
     const { isMobile } = useSidebar();
 
     return (
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
+            <SidebarGroupLabel>{title}</SidebarGroupLabel>
             <SidebarMenu>
                 {projects.map((item) => (
-                    <SidebarMenuItem key={item.name}>
+                    <SidebarMenuItem
+                        key={item.name}
+                        className={item.selected ? "bg-accent rounded-lg" : ""}
+                    >
                         <SidebarMenuButton asChild>
                             <a href={item.url}>
                                 <item.icon />
@@ -75,12 +81,6 @@ export function NavProjects({
                         </DropdownMenu>
                     </SidebarMenuItem>
                 ))}
-                <SidebarMenuItem>
-                    <SidebarMenuButton className="text-sidebar-foreground/70">
-                        <MoreHorizontal className="text-sidebar-foreground/70" />
-                        <span>More</span>
-                    </SidebarMenuButton>
-                </SidebarMenuItem>
             </SidebarMenu>
         </SidebarGroup>
     );
